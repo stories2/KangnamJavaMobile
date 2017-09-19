@@ -26,12 +26,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main4);
 
         //InitActivityMain2();
         //EventActivityMain2();
-        InitActivityMain3();
-        EventActivityMain3();
+        //InitActivityMain3();
+        //EventActivityMain3();
     }
 
     public void EventActivityMain3() {
