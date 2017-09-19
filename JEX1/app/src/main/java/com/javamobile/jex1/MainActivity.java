@@ -49,11 +49,14 @@ public class MainActivity extends Activity {
         setContentView(baseLinearLayout, layoutParams);
 
         final EditText manualEditText = new EditText(this);
+        manualEditText.setHint("Type here");
 
         Button manualButton = new Button(this);
+        manualButton.setBackgroundColor(Color.rgb(255, 255, 0));
         manualButton.setText("Press me!");
 
         final TextView manualTextView = new TextView(this);
+        manualTextView.setText("This is text view");
 
         baseLinearLayout.addView(manualEditText);
         baseLinearLayout.addView(manualButton);
