@@ -10,24 +10,85 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
     LinearLayout viewRadioGroup, viewResult;
     CheckBox enableRadio;
+    Switch switchEnable;
     RadioGroup radioGroup;
-    RadioButton radioCat, radioDog, radioRabbit;
+    RadioButton radioCat, radioDog, radioRabbit, radioLol, radioMa, radioNu;
     Button btnDone;
     ImageView imgPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
-        InitActivityMain2();
-        EventActivityMain2();
+        //InitActivityMain2();
+        //EventActivityMain2();
+        InitActivityMain3();
+        EventActivityMain3();
+    }
+
+    public void EventActivityMain3() {
+        switchEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
+                if(enable) {
+                    viewRadioGroup.setVisibility(View.VISIBLE);
+                    viewResult.setVisibility(View.VISIBLE);
+                }
+                else {
+                    viewRadioGroup.setVisibility(View.INVISIBLE);
+                    viewResult.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.radioLol:
+                        Toast.makeText(getApplicationContext(), "Loli", Toast.LENGTH_SHORT).show();
+                        imgPicture.setImageResource(R.drawable.lollipop);
+                        break;
+                    case R.id.radioMa:
+                        Toast.makeText(getApplicationContext(), "Marsh", Toast.LENGTH_SHORT).show();
+                        imgPicture.setImageResource(R.drawable.marshmallow);
+                        break;
+                    case R.id.radioNu:
+                        Toast.makeText(getApplicationContext(), "Nougat", Toast.LENGTH_SHORT).show();
+                        imgPicture.setImageResource(R.drawable.nougat2);
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(), "select something", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+    }
+
+    public void InitActivityMain3() {
+        viewRadioGroup = (LinearLayout) findViewById(R.id.viewRadioGroup);
+        viewResult = (LinearLayout) findViewById(R.id.viewResult);
+
+        switchEnable = (Switch) findViewById(R.id.switchEnable);
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        radioLol = (RadioButton) findViewById(R.id.radioLol);
+        radioMa = (RadioButton) findViewById(R.id.radioMa);
+        radioNu = (RadioButton) findViewById(R.id.radioNu);
+
+        imgPicture = (ImageView) findViewById(R.id.imgPicture);
+
+        viewRadioGroup.setVisibility(View.INVISIBLE);
+        viewResult.setVisibility(View.INVISIBLE);
     }
 
     public void EventActivityMain2() {
