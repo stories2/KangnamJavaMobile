@@ -1,6 +1,7 @@
 package com.javamobile.jex1;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,12 +27,38 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        //setContentView(R.layout.activity_main5);
 
         //InitActivityMain2();
         //EventActivityMain2();
         //InitActivityMain3();
         //EventActivityMain3();
+
+        ManualLayout();
+    }
+
+    public void ManualLayout() {
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+        LinearLayout baseLinearLayout = new LinearLayout(this);
+        baseLinearLayout.setOrientation(LinearLayout.VERTICAL);
+        baseLinearLayout.setBackgroundColor(Color.rgb(0, 255, 0));
+        setContentView(baseLinearLayout, layoutParams);
+
+        Button manualButton = new Button(this);
+        manualButton.setText("This is button");
+        manualButton.setBackgroundColor(Color.MAGENTA);
+
+        baseLinearLayout.addView(manualButton);
+
+        manualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "You click manual button", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void EventActivityMain3() {
