@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
                 PrintLog("MainActivity", "onCreate/onCheckedChanged", "enable event accepted: " + enable, LOG_LEVEL_INFO);
+                btnTest.setEnabled(enable);
             }
         });
 
@@ -33,6 +34,7 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
                 PrintLog("MainActivity", "onCreate/onCheckedChanged", "clickable event accepted: " + enable, LOG_LEVEL_INFO);
+                btnTest.setClickable(enable);
             }
         });
 
@@ -40,6 +42,12 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
                 PrintLog("MainActivity", "onCreate/onCheckedChanged", "rotate event accepted: " + enable, LOG_LEVEL_INFO);
+                if(enable) {
+                    btnTest.setRotation(45);
+                }
+                else {
+                    btnTest.setRotation(0);
+                }
             }
         });
 
@@ -60,6 +68,9 @@ public class MainActivity extends Activity {
         checkRotate = (CheckBox) findViewById(R.id.checkRotate);
 
         btnTest = (Button) findViewById(R.id.btnTest);
+
+        btnTest.setEnabled(false);
+        btnTest.setClickable(false);
 
         PrintLog("MainActivity", "InitLayout", "init ok", LOG_LEVEL_INFO);
     }
