@@ -27,10 +27,16 @@
         android:text="@string/checkRotate"
         />
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnTest"
-        android:text="@string/btnTest"
-        />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/btnTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnTest" />
+    </LinearLayout>
 </LinearLayout>
