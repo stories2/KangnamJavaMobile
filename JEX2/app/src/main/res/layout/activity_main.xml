@@ -6,6 +6,31 @@
     tools:context="com.mobilecompute.jex2.MainActivity"
     android:orientation="vertical">
 
-    
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkEnable"
+        android:text="@string/checkEnable"
+        />
 
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkClickable"
+        android:text="@string/checkClickable"
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkRotate"
+        android:text="@string/checkRotate"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTest"
+        android:text="@string/btnTest"
+        />
 </LinearLayout>

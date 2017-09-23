@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">연습문제 4-7_김현우 201501180</string>
+    <string name="checkEnable">Enabled property</string>
+    <string name="checkClickable">Clickable property</string>
+    <string name="checkRotate">Rotate 45 degree</string>
+    <string name="btnTest">Button</string>
 </resources>
