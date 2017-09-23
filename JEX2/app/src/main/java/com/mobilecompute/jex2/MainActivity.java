@@ -7,7 +7,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import static com.mobilecompute.jex2.Settings.DefineManager.DISABLE;
 import static com.mobilecompute.jex2.Settings.DefineManager.LOG_LEVEL_INFO;
+import static com.mobilecompute.jex2.Settings.DefineManager.ROTATE_DEGREE_0;
+import static com.mobilecompute.jex2.Settings.DefineManager.ROTATE_DEGREE_45;
 import static com.mobilecompute.jex2.Utils.LogManager.PrintLog;
 
 public class MainActivity extends Activity {
@@ -43,10 +46,10 @@ public class MainActivity extends Activity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean enable) {
                 PrintLog("MainActivity", "onCreate/onCheckedChanged", "rotate event accepted: " + enable, LOG_LEVEL_INFO);
                 if(enable) {
-                    btnTest.setRotation(45);
+                    btnTest.setRotation(ROTATE_DEGREE_45);
                 }
                 else {
-                    btnTest.setRotation(0);
+                    btnTest.setRotation(ROTATE_DEGREE_0);
                 }
             }
         });
@@ -69,8 +72,8 @@ public class MainActivity extends Activity {
 
         btnTest = (Button) findViewById(R.id.btnTest);
 
-        btnTest.setEnabled(false);
-        btnTest.setClickable(false);
+        btnTest.setEnabled(DISABLE);
+        btnTest.setClickable(DISABLE);
 
         PrintLog("MainActivity", "InitLayout", "init ok", LOG_LEVEL_INFO);
     }

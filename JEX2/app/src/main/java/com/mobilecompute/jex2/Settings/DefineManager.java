@@ -14,4 +14,12 @@ public class DefineManager {
 
     public static final String
             APP_NAME = "연습문제 4-7_김현우 201501180";
+
+    public static final float
+            ROTATE_DEGREE_45 = 45,
+            ROTATE_DEGREE_0 = 0;
+
+    public static final boolean
+            DISABLE = false,
+            ENABLE = true;
 }
