@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -34,6 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         LinearLayout linearLayout = (LinearLayout)view;
+        PrintLayoutSizeInfo(linearLayout);
         switch (linearLayout.getId()){
             case R.id.linearFirstLayout:
                 Log.d(TAG, "first layout clicked");
@@ -50,5 +52,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
             default:
                 break;
         }
+    }
+
+    public void PrintLayoutSizeInfo(LinearLayout linearLayout) {
+        int width = linearLayout.getWidth(),
+                height = linearLayout.getHeight();
+
+        String sizeInfo = String.format("%d x %d", width, height);
+
+        Toast.makeText(getApplicationContext(), sizeInfo, Toast.LENGTH_SHORT).show();
     }
 }
