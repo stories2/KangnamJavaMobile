@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.java.kangnam.jex5.MainActivity">
+
+    <Chronometer
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format="Time : %s"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/chronometerTimer"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start timer"
+        android:id="@+id/btnStartTimer"
+        android:visibility="gone"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroupDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/radioDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select date"
+            />
+        <RadioButton
+            android:id="@+id/radioTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select time"
+            />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:calendarViewShown="false"
+                android:datePickerMode="calendar"
+                ></DatePicker>
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:timePickerMode="spinner"
+                >
+
+            </TimePicker>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearPrintDateTime"
+        >
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/txtYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            />
+        <TextView
+            android:id="@+id/txtMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            />
+        <TextView
+            android:id="@+id/txtDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            />
+        <TextView
+            android:id="@+id/txtHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            />
+        <TextView
+            android:id="@+id/txtMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            />
+        <TextView
+            android:id="@+id/txtSec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reservated"
+            />
+    </LinearLayout>
+</LinearLayout>
