@@ -16,6 +16,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Init1();
+    }
+
+    public void Init1() {
+
         autoTextView = (AutoCompleteTextView) findViewById(R.id.autoTextView);
         multiAutoTextView = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoTextView);
 
