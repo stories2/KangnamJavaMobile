@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.TabHost;
 import android.widget.ViewFlipper;
 
 public class MainActivity extends Activity {
@@ -13,14 +14,30 @@ public class MainActivity extends Activity {
     AutoCompleteTextView autoTextView;
     MultiAutoCompleteTextView multiAutoTextView;
     ViewFlipper viewFilpImage;
+    TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
         //Init1();
-        Init2();
+        //Init2();
+        Init3();
+    }
+
+    public void Init3() {
+        tabHost = (TabHost)findViewById(R.id.tabHost);
+        tabHost.setup();
+
+        TabHost.TabSpec tab1 = tabHost.newTabSpec("tab1").setIndicator("R").setContent(R.id.tab1);
+        tabHost.addTab(tab1);
+
+        TabHost.TabSpec tab2 = tabHost.newTabSpec("tab2").setIndicator("G").setContent(R.id.tab2);
+        tabHost.addTab(tab2);
+
+        TabHost.TabSpec tab3 = tabHost.newTabSpec("tab3").setIndicator("B").setContent(R.id.tab3);
+        tabHost.addTab(tab3);
     }
 
     public void OnBtnStartAutoSwap(View view) {
