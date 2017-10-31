@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -11,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -18,14 +21,21 @@ public class MainActivity extends Activity {
 
     LinearLayout linearMain;
     Button btnTest, btnColor, btnRotate;
+    EditText etxtDegree;
+    ImageView imgSrc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main4);
 
-        linearMain = (LinearLayout)findViewById(R.id.linearMain);
+        //linearMain = (LinearLayout)findViewById(R.id.linearMain);
+        Init4();
+    }
 
+    public void Init4() {
+        etxtDegree = (EditText)findViewById(R.id.etxtDegree);
+        imgSrc = (ImageView)findViewById(R.id.imgSrc);
     }
 
     public void OnBtnAlertClickListener(View view) {
@@ -56,8 +66,8 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        menu.add(0, 1, 0, "test red");
+        getMenuInflater().inflate(R.menu.img_menu, menu);
+        //menu.add(0, 1, 0, "test red");
         return true;
     }
 
@@ -83,6 +93,21 @@ public class MainActivity extends Activity {
                 break;
             case 1:
                 linearMain.setBackgroundColor(Color.RED);
+                break;
+            case R.id.itemRotate:
+                imgSrc.setRotation(Integer.parseInt(etxtDegree.getText().toString()));
+                break;
+            case R.id.itemHan:
+                item.setChecked(true);
+                imgSrc.setImageResource(R.drawable.han);
+                break;
+            case R.id.itemChu:
+                item.setChecked(true);
+                imgSrc.setImageResource(R.drawable.chu);
+                break;
+            case R.id.itemTemp:
+                item.setChecked(true);
+                imgSrc.setImageResource(R.drawable.temp);
                 break;
         }
         return super.onOptionsItemSelected(item);

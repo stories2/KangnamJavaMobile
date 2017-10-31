@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Rotate"
+        android:id="@+id/itemRotate"
+        />
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/itemHan"
+            android:title="Han"
+            android:checked="true"/>
+        <item
+            android:id="@+id/itemChu"
+            android:title="Chu"
+            />
+        <item
+            android:id="@+id/itemTemp"
+            android:title="Temp"
+            />
+    </group>
+</menu>
