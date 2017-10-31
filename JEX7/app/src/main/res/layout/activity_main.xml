@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/linearMain"
+    android:gravity="center"
     tools:context="com.mobile.java.jex7.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTest"
+        android:text="Test"
+        />
 </LinearLayout>

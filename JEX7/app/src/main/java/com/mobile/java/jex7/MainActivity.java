@@ -5,11 +5,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
     LinearLayout linearMain;
+    Button btnTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         linearMain = (LinearLayout)findViewById(R.id.linearMain);
+        btnTest = (Button)findViewById(R.id.btnTest);
     }
 
     @Override
@@ -43,6 +46,7 @@ public class MainActivity extends Activity {
                 linearMain.setBackgroundColor(Color.BLUE);
                 break;
             case R.id.itemHello:
+                btnTest.setRotation(45);
                 break;
         }
         return super.onOptionsItemSelected(item);
