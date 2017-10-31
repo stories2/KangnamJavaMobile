@@ -3,22 +3,37 @@ package com.mobile.java.jex7;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
     LinearLayout linearMain;
-    Button btnTest;
+    Button btnTest, btnColor, btnRotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         linearMain = (LinearLayout)findViewById(R.id.linearMain);
+
+    }
+
+    public void Init2() {
+        btnColor = (Button)findViewById(R.id.btnColor);
+        btnRotate = (Button)findViewById(R.id.btnRotate);
+
+        registerForContextMenu(btnColor);
+        registerForContextMenu(btnRotate);
+    }
+
+    public void Init1() {
         btnTest = (Button)findViewById(R.id.btnTest);
     }
 
@@ -54,5 +69,24 @@ public class MainActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater menuInflater = getMenuInflater();
+        if(v == btnColor) {
+            menuInflater.inflate(R.menu.color_menu, menu);
+        }
+        else if(v == btnRotate) {
+            menuInflater.inflate(R.menu.rotate_menu, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        super.onContextItemSelected(item);
+        return true;
     }
 }
