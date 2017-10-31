@@ -2,6 +2,7 @@ package com.mobile.java.jex7;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -31,6 +33,12 @@ public class MainActivity extends Activity {
         builder.setTitle("Title");
         builder.setMessage("Message");
         builder.setIcon(R.mipmap.ic_launcher);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+            }
+        });
         builder.show();
     }
 
