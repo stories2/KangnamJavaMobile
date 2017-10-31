@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.option_menu, menu);
+        menu.add(0, 1, 0, "test red");
         return true;
     }
 
@@ -47,6 +48,9 @@ public class MainActivity extends Activity {
                 break;
             case R.id.itemHello:
                 btnTest.setRotation(45);
+                break;
+            case 1:
+                linearMain.setBackgroundColor(Color.RED);
                 break;
         }
         return super.onOptionsItemSelected(item);
