@@ -1,6 +1,7 @@
 package com.mobile.java.jex7;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -19,10 +20,18 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
         linearMain = (LinearLayout)findViewById(R.id.linearMain);
 
+    }
+
+    public void OnBtnAlertClickListener(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Title");
+        builder.setMessage("Message");
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.show();
     }
 
     public void Init2() {
