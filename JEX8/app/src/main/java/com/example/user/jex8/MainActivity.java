@@ -5,15 +5,58 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
+
+    TextView txtName, txtEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Init3();
+        Init4();
+    }
+
+    public void BtnOnAlertClick(View view) {
+        final View alertDialogView = (View) View.inflate(MainActivity.this, R.layout.alert_dialog_view, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setTitle("Alert");
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+        alertDialogBuilder.setView(alertDialogView);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                EditText etxtEmail, etxtName;
+                etxtEmail = (EditText)alertDialogView.findViewById(R.id.etxtEmail);
+                etxtName = (EditText)alertDialogView.findViewById(R.id.etxtName);
+
+                txtEmail.setText(etxtEmail.getText().toString());
+                txtName.setText(etxtName.getText().toString());
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                final View toastView = (View)View.inflate(MainActivity.this, R.layout.toast_view, null);
+                Toast toast = new Toast(getApplicationContext());
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setView(toastView);
+                toast.show();
+            }
+        });
+        alertDialogBuilder.show();
+    }
+
+    public void Init4() {
+        txtName = (TextView)findViewById(R.id.txtName);
+        txtEmail = (TextView)findViewById(R.id.txtEmail);
     }
 
     public void Init1() {
