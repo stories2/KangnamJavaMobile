@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Init2();
+        Init3();
     }
 
     public void Init1() {
@@ -48,6 +48,25 @@ public class MainActivity extends Activity {
                     }
                 });
         alertDialogBuilder.setPositiveButton("Close", null);
+        alertDialogBuilder.show();
+    }
+    public void Init3() {
+        final String[] versionArray = new String[] {
+                "Lolli", "Mash", "Nugat"
+        };
+        final boolean[] checkArray = new boolean[] {
+                false, false, false
+        };
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setTitle("Version");
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+        alertDialogBuilder.setMultiChoiceItems(versionArray, checkArray, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        Log.d("Test", "index: " + versionArray[i] + " check: " + b);
+                    }
+                });
+                alertDialogBuilder.setPositiveButton("Close", null);
         alertDialogBuilder.show();
     }
 }
