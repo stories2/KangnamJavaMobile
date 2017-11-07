@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Init1();
+        Init2();
     }
 
     public void Init1() {
@@ -24,6 +24,23 @@ public class MainActivity extends Activity {
         alertDialogBuilder.setTitle("Version");
         alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
         alertDialogBuilder.setItems(versionArray,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.d("Test", "index: " + versionArray[i]);
+                    }
+                });
+        alertDialogBuilder.setPositiveButton("Close", null);
+        alertDialogBuilder.show();
+    }
+    public void Init2() {
+        final String[] versionArray = new String[] {
+                "Lolli", "Mash", "Nugat"
+        };
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setTitle("Version");
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+        alertDialogBuilder.setSingleChoiceItems(versionArray, 0,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
