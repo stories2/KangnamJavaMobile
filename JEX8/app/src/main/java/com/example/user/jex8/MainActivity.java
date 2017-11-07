@@ -14,13 +14,55 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     TextView txtName, txtEmail;
+    EditText etxtName, etxtEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
-        Init4();
+        Init5();
+    }
+
+    public void BtnOnAlertEditClick(View view) {
+        final View alertDialogView = (View) View.inflate(MainActivity.this, R.layout.alert_dialog_view, null);
+        EditText initEtxtEmail = alertDialogView.findViewById(R.id.etxtEmail),
+                initEtxtName = alertDialogView.findViewById(R.id.etxtName);
+
+        initEtxtEmail.setText(etxtEmail.getText().toString());
+        initEtxtName.setText(etxtName.getText().toString());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        alertDialogBuilder.setTitle("Alert");
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher);
+        alertDialogBuilder.setView(alertDialogView);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                EditText etxtEmailDialog, etxtNameDialog;
+                etxtEmailDialog = (EditText)alertDialogView.findViewById(R.id.etxtEmail);
+                etxtNameDialog = (EditText)alertDialogView.findViewById(R.id.etxtName);
+
+                etxtEmail.setText(etxtEmailDialog.getText().toString());
+                etxtName.setText(etxtNameDialog.getText().toString());
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                final View toastView = (View)View.inflate(MainActivity.this, R.layout.toast_view, null);
+                Toast toast = new Toast(getApplicationContext());
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setView(toastView);
+                toast.show();
+            }
+        });
+        alertDialogBuilder.show();
+    }
+
+    public void Init5() {
+        etxtEmail = (EditText)findViewById(R.id.etxtEmail);
+        etxtName = (EditText)findViewById(R.id.etxtName);
     }
 
     public void BtnOnAlertClick(View view) {
