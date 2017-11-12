@@ -5,4 +5,5 @@
     <string name="rabbit">Rabbit</string>
     <string name="horse">Horse</string>
     <string name="btnShow">Show picture</string>
+    <string name="not_available">404</string>
 </resources>
