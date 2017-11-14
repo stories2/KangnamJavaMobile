@@ -7,25 +7,69 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class MainActivity extends Activity {
 
-    EditText etxtRawFileText;
+    EditText etxtRawFileText, etxtListDir;
     ImageView imageViewFromSD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main4);
 
-        Init2();
+        Init4();
+    }
+
+    public void btnOnListDirectory(View view) {
+        final String sdPath = Environment.getRootDirectory().getAbsolutePath();
+        File[] listDirectory = new File(sdPath).listFiles();
+
+        Log.d("jex11", "path: " + sdPath);
+        for(File indexOfDirectory : listDirectory) {
+            if(indexOfDirectory.isDirectory()) {
+                etxtListDir.append("<Dir> " + indexOfDirectory.getName() + "\n");
+            }
+            else if(indexOfDirectory.isFile()) {
+                etxtListDir.append("<File> " + indexOfDirectory.getName() + "\n");
+            }
+        }
+    }
+
+    public void Init4() {
+        etxtListDir = (EditText)findViewById(R.id.etxtListDir);
+    }
+
+    public void Init3() {
+        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(
+                    new String[] {
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, MODE_PRIVATE);
+        }
+    }
+
+    public void btnOnMakeDirectory(View view) {
+        final String sdPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        final File directory = new File(sdPath + "/testDir");
+
+        directory.mkdir();
+    }
+
+    public void btnOnDeleteDirectory(View view) {
+        final String sdPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        final File directory = new File(sdPath + "/testDir");
+
+        directory.delete();
     }
 
     public void btnOnReadImageFileClick(View view) {
