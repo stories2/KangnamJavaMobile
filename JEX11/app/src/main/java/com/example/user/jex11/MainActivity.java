@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,13 +22,56 @@ public class MainActivity extends Activity {
 
     EditText etxtRawFileText, etxtListDir;
     ImageView imageViewFromSD;
+    CustomImageView customImageView;
+    TextView etxtImageStatus;
+    File[] imageFiles;
+    int currentImagePoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_main5);
 
-        Init4();
+        Init5();
+    }
+
+    public void btnOnBeforeClick(View view) {
+        currentImagePoint = (currentImagePoint - 1) % imageFiles.length;
+        if(currentImagePoint < 0) {
+            currentImagePoint = imageFiles.length - 1;
+        }
+        Log.d("jex11", "before : " + currentImagePoint);
+        etxtImageStatus.setText("" + currentImagePoint + " / " + (imageFiles.length - 1));
+        if(imageFiles.length > 0) {
+            customImageView.imagePath = imageFiles[currentImagePoint].getAbsolutePath();
+            customImageView.invalidate();
+        }
+    }
+
+    public void btnOnAfterClick(View view) {
+        currentImagePoint = (currentImagePoint + 1) % imageFiles.length;
+        Log.d("jex11", "after : " + currentImagePoint);
+        etxtImageStatus.setText("" + currentImagePoint + " / " + (imageFiles.length - 1));
+        if(imageFiles.length > 0) {
+            customImageView.imagePath = imageFiles[currentImagePoint].getAbsolutePath();
+            customImageView.invalidate();
+        }
+    }
+
+    public void Init5() {
+        customImageView = (CustomImageView)findViewById(R.id.customImageView);
+        etxtImageStatus = (TextView) findViewById(R.id.etxtImageStatus);
+
+        imageFiles = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).listFiles();
+
+        Log.d("jex11", "path: " + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+
+
+        if(imageFiles.length > 0) {
+            customImageView.imagePath = imageFiles[currentImagePoint].getAbsolutePath();
+            customImageView.invalidate();
+        }
+        etxtImageStatus.setText("" + currentImagePoint + " / " + (imageFiles.length - 1));
     }
 
     public void btnOnListDirectory(View view) {
