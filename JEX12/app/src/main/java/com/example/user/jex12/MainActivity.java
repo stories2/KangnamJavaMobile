@@ -21,10 +21,40 @@ public class MainActivity extends Activity {
         setContentView(customCanvasView);*/
         /*customImageView = new CustomImageView(this);
         setContentView(customImageView);*/
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
         linearCustomPhoto = (LinearLayout)findViewById(R.id.linearCustomPhoto);
         customPhotoView = new CustomPhotoView(this);
         linearCustomPhoto.addView(customPhotoView);
+    }
+
+    public void btnOnSaturDown(View view) {
+        customPhotoView.setSatur(customPhotoView.getSatur() - 0.2f);
+        customPhotoView.invalidate();
+    }
+
+    public void btnOnSaturUp(View view) {
+        customPhotoView.setSatur(customPhotoView.getSatur() + 0.2f);
+        customPhotoView.invalidate();
+    }
+
+    public void btnOnEmbo(View view) {
+        if(customPhotoView.getEmbo() == 1) {
+            customPhotoView.setEmbo(0);
+        }
+        else {
+            customPhotoView.setEmbo(1);
+        }
+        customPhotoView.invalidate();
+    }
+
+    public void btnOnBlur(View view) {
+        if(customPhotoView.getBlur() == 1) {
+            customPhotoView.setBlur(0);
+        }
+        else {
+            customPhotoView.setBlur(1);
+        }
+        customPhotoView.invalidate();
     }
 
     public void btnOnGray(View view) {

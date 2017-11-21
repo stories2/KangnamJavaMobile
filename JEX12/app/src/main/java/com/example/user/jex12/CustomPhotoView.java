@@ -19,7 +19,7 @@ import android.view.View;
 
 public class CustomPhotoView extends View {
 
-    float scale = 1, angle = 0, color = 1, satur = 1;
+    float scale = 1, angle = 0, color = 1, satur = 1, blur = 0, embo = 0;
 
     public CustomPhotoView(Context context) {
         super(context);
@@ -45,6 +45,22 @@ public class CustomPhotoView extends View {
         this.satur = satur;
     }
 
+    public void setBlur(float blur) {
+        this.blur = blur;
+    }
+
+    public void setEmbo(float embo) {
+        this.embo = embo;
+    }
+
+    public float getEmbo() {
+        return embo;
+    }
+
+    public float getBlur() {
+        return blur;
+    }
+
     public float getScale() {
         return scale;
     }
@@ -65,17 +81,21 @@ public class CustomPhotoView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test);
 
         int pictureX = (this.getWidth() - bitmap.getWidth()) / 2,
                 pictureY = (this.getHeight() - bitmap.getHeight()) / 2,
                 centerX = (this.getWidth() / 2), centerY = (this.getHeight() / 2);
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
-        BlurMaskFilter blurMaskFilter = new BlurMaskFilter(30, BlurMaskFilter.Blur.NORMAL);
-        paint.setMaskFilter(blurMaskFilter);
-        EmbossMaskFilter embossMaskFilter = new EmbossMaskFilter(new float[]{3, 3, 3}, 0.5f, 5, 10);
-        paint.setMaskFilter(embossMaskFilter);
+        if(blur == 1) {
+            BlurMaskFilter blurMaskFilter = new BlurMaskFilter(30, BlurMaskFilter.Blur.NORMAL);
+            paint.setMaskFilter(blurMaskFilter);
+        }
+        if(embo == 1) {
+            EmbossMaskFilter embossMaskFilter = new EmbossMaskFilter(new float[]{3, 3, 3}, 0.5f, 5, 10);
+            paint.setMaskFilter(embossMaskFilter);
+        }
 
         canvas.scale(scale, scale, centerX, centerY);
         canvas.rotate(angle, centerX, centerY);
