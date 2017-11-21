@@ -3,7 +3,9 @@ package com.example.user.jex12;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
 
@@ -27,8 +29,12 @@ public class CustomImageView extends View {
 
         //canvas.rotate(0, centerX, centerY);
         //canvas.translate(-150, 200);
-        //canvas.scale(2, 2, centerX, centerY);
-        canvas.skew(0.3f, 0.3f);
-        canvas.drawBitmap(picture, pictureX, pictureY, null);
+        canvas.scale(2, 2, centerX, centerY);
+        //canvas.skew(0.3f, 0.3f);
+
+        Paint paint = new Paint();
+        BlurMaskFilter blurMaskFilter = new BlurMaskFilter(30, BlurMaskFilter.Blur.NORMAL);
+        paint.setMaskFilter(blurMaskFilter);
+        canvas.drawBitmap(picture, pictureX, pictureY, paint);
     }
 }
