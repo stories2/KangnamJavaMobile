@@ -23,8 +23,10 @@ public class MainActivity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId) {
                     case R.id.radioSecond:
+                        activityTarget = 0;
                         break;
                     case R.id.radioThird:
+                        activityTarget = 1;
                         break;
                 }
             }
