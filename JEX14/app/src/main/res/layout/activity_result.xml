@@ -6,6 +6,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/imageTop"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/txtTop"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
@@ -21,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage1"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -42,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage2"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -63,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage3"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -84,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage4"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -105,6 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage5"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -126,6 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage6"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -147,6 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage7"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -168,6 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage8"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 
@@ -189,6 +217,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/rateImage9"
+            style="?android:attr/ratingBarStyleSmall"
             />
     </LinearLayout>
 </LinearLayout>

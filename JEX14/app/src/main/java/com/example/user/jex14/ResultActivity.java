@@ -3,6 +3,7 @@ package com.example.user.jex14;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -12,8 +13,9 @@ import android.widget.TextView;
 
 public class ResultActivity extends Activity {
 
-    TextView txtName1, txtName2, txtName3, txtName4, txtName5, txtName6, txtName7, txtName8, txtName9;
+    TextView txtName1, txtName2, txtName3, txtName4, txtName5, txtName6, txtName7, txtName8, txtName9, txtTop;
     RatingBar rateImage1, rateImage2, rateImage3, rateImage4, rateImage5, rateImage6, rateImage7, rateImage8, rateImage9;
+    ImageView imageTop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class ResultActivity extends Activity {
         txtName8 = (TextView)findViewById(R.id.txtName8);
         txtName9 = (TextView)findViewById(R.id.txtName9);
 
+        txtTop = (TextView)findViewById(R.id.txtTop);
+
         rateImage1 = (RatingBar)findViewById(R.id.rateImage1);
         rateImage2 = (RatingBar)findViewById(R.id.rateImage2);
         rateImage3 = (RatingBar)findViewById(R.id.rateImage3);
@@ -40,10 +44,23 @@ public class ResultActivity extends Activity {
         rateImage8 = (RatingBar)findViewById(R.id.rateImage8);
         rateImage9 = (RatingBar)findViewById(R.id.rateImage9);
 
+        imageTop = (ImageView)findViewById(R.id.imageTop);
+
         Intent intent = getIntent();
 
         int[] voteData = intent.getIntArrayExtra("vote");
         String[] imageNames = intent.getStringArrayExtra("name");
+        int images[] = {
+                R.drawable.pic1,
+                R.drawable.pic2,
+                R.drawable.pic3,
+                R.drawable.pic4,
+                R.drawable.pic5,
+                R.drawable.pic6,
+                R.drawable.pic7,
+                R.drawable.pic8,
+                R.drawable.pic9,
+        };
 
         txtName1.setText(imageNames[0]);
         txtName2.setText(imageNames[1]);
@@ -64,5 +81,14 @@ public class ResultActivity extends Activity {
         rateImage7.setRating(voteData[6]);
         rateImage8.setRating(voteData[7]);
         rateImage9.setRating(voteData[8]);
+
+        int max = 0, i;
+        for(i = 0; i < 9; i += 1) {
+            if(max < voteData[i]) {
+                max = voteData[i];
+                imageTop.setImageResource(images[i]);
+                txtTop.setText(imageNames[i]);
+            }
+        }
     }
 }
