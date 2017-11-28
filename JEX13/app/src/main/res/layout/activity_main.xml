@@ -7,6 +7,28 @@
     android:orientation="vertical"
     tools:context="com.example.stories2.jex13.MainActivity">
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupActivity"
+        >
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Second activity"
+            android:id="@+id/radioSecond"
+            />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Third activity"
+            android:id="@+id/radioThird"
+            />
+
+    </RadioGroup>
+
     <Button
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
