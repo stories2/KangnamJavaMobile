@@ -1,12 +1,19 @@
 package com.example.user.jex16;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class MainActivity extends Activity {
 
@@ -19,9 +26,92 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main3);
 
-        Init1();
+        Log.v("JEX16", "onCreate");
+        //Init1();
+
+        requestPermissions(new String[] {
+                Manifest.permission.ACCESS_FINE_LOCATION
+        }, MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v("JEX16", "onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.v("JEX16", "onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("JEX16", "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v("JEX16", "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("JEX16", "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v("JEX16", "onDestroy");
+    }
+
+    public void btnOnEscapeClick(View view) {
+        finish();
+    }
+
+    public void runIntent(String intentAction, Uri uri) {
+        Intent intent = new Intent(intentAction, uri);
+        startActivity(intent);
+    }
+
+    public void btnOnCallClick(View view) {
+        runIntent(Intent.ACTION_DIAL, Uri.parse("tel:010-5635-1845"));
+    }
+
+    public void btnOnWebPageClick(View view) {
+        runIntent(Intent.ACTION_VIEW, Uri.parse("http://i2max-ml.xyz"));
+    }
+
+    public void btnOnGoogleMapClick(View view) {
+        runIntent(Intent.ACTION_VIEW, Uri.parse("geo:37,127?z=17"));
+    }
+
+    public void btnOnGoogleSearchClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+        intent.putExtra(SearchManager.QUERY, "hello world");
+        startActivity(intent);
+    }
+
+    public void btnOnSendMessageClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.putExtra("sms_body", "hello");
+        intent.setData(Uri.parse("smsto:" + Uri.parse("010-5635-1845")));
+        startActivity(intent);
+    }
+
+    public void btnOnPictureClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri uri = Uri.parse("content://" + Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/IMG_6994.JPG");
+        intent.setDataAndType(uri, "image/jpeg");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(intent);
     }
 
     @Override
