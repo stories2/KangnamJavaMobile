@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import static com.example.user.jex16.MainActivity.ADD_REQUEST_RESULT;
+import static com.example.user.jex16.MainActivity.DIVIDE_REQUEST_RESULT;
+import static com.example.user.jex16.MainActivity.MINUS_REQUEST_RESULT;
+import static com.example.user.jex16.MainActivity.MULTIPLE_REQUEST_RESULT;
+
 /**
  * Created by User on 2017-12-05.
  */
 
 public class AddActivity extends Activity {
 
-    int sum = 0;
+    int request = ADD_REQUEST_RESULT;
+    double sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +25,21 @@ public class AddActivity extends Activity {
         setContentView(R.layout.activity_main2);
 
         Intent intent = getIntent();
-        sum = intent.getIntExtra("A", 0) + intent.getIntExtra("B", 0);
+        request = intent.getIntExtra("Request", ADD_REQUEST_RESULT);
+        switch (request) {
+            case ADD_REQUEST_RESULT:
+                sum = (double)intent.getIntExtra("A", 0) + intent.getIntExtra("B", 0);
+                break;
+            case MINUS_REQUEST_RESULT:
+                sum = (double)intent.getIntExtra("A", 0) - intent.getIntExtra("B", 0);
+                break;
+            case MULTIPLE_REQUEST_RESULT:
+                sum = (double)intent.getIntExtra("A", 0) * intent.getIntExtra("B", 0);
+                break;
+            case DIVIDE_REQUEST_RESULT:
+                sum = (double)intent.getIntExtra("A", 0) / intent.getIntExtra("B", 1);
+                break;
+        }
     }
 
     public void btnOnBackClick(View view) {

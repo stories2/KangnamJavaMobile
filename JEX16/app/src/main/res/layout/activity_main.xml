@@ -21,11 +21,43 @@
         android:id="@+id/etxtB"
         />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioAdd"
+            android:text="Add"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioMinus"
+            android:text="Minus"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioMultiple"
+            android:text="Mutliple"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioDivide"
+            android:text="Divide"
+            />
+
+    </RadioGroup>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:onClick="btnOnAddClick"
+        android:text="Calculate"
+        android:onClick="btnOnCalculateClick"
         />
 
 </LinearLayout>
