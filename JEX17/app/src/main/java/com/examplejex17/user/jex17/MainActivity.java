@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Gallery;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,14 +21,25 @@ public class MainActivity extends Activity {
     ArrayAdapter<String>stringListItemAdapter;
     ArrayList<String>listItems;
     GridView gridView;
+    Gallery gallery;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main4);
 
         //Init1();
-        Init3();
+        //Init3();
+        Init4();
+    }
+
+    public void Init4() {
+        gallery = (Gallery)findViewById(R.id.gallery);
+        imageView = (ImageView) findViewById(R.id.imageView);
+
+        CustomGalleryView customGalleryView = new CustomGalleryView(this, imageView);
+        gallery.setAdapter(customGalleryView);
     }
 
     public void Init3() {
