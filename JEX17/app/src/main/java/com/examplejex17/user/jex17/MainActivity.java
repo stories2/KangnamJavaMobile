@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,14 +18,21 @@ public class MainActivity extends Activity {
     EditText etxtData;
     ArrayAdapter<String>stringListItemAdapter;
     ArrayList<String>listItems;
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
         //Init1();
-        Init2();
+        Init3();
+    }
+
+    public void Init3() {
+        gridView = (GridView)findViewById(R.id.gridView);
+        CustomGridAdapter customGridAdapter = new CustomGridAdapter(this);
+        gridView.setAdapter(customGridAdapter);
     }
 
     public void Init2() {
