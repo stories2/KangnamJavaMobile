@@ -10,6 +10,8 @@ import android.widget.Gallery;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,15 +25,43 @@ public class MainActivity extends Activity {
     GridView gridView;
     Gallery gallery;
     ImageView imageView;
+    Spinner spinnerMovie;
+    TextView txtMovieTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_main5);
 
         //Init1();
         //Init3();
-        Init4();
+        //Init4();
+        Init5();
+    }
+
+    public void Init5() {
+        txtMovieTitle = (TextView)findViewById(R.id.txtMovieTitle);
+        spinnerMovie = (Spinner)findViewById(R.id.spinnerMovie);
+
+        final String[] movieTitles = {
+                "쿵푸팬더", "짱구는 못말려", "아저씨"
+        };
+
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, movieTitles);
+        spinnerMovie.setAdapter(adapter);
+
+        spinnerMovie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtMovieTitle.setText(movieTitles[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void Init4() {
