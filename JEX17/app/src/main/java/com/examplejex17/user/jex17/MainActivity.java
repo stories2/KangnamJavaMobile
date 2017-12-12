@@ -42,9 +42,15 @@ public class MainActivity extends Activity {
     public void Init5() {
         txtMovieTitle = (TextView)findViewById(R.id.txtMovieTitle);
         spinnerMovie = (Spinner)findViewById(R.id.spinnerMovie);
+        imageView = (ImageView)findViewById(R.id.imageView);
 
         final String[] movieTitles = {
-                "쿵푸팬더", "짱구는 못말려", "아저씨"
+                "써니", "완득이", "괴물"
+        };
+        final Integer[] moviePoster = {
+                R.drawable.mov01,
+                R.drawable.mov02,
+                R.drawable.mov03
         };
 
         ArrayAdapter<String> adapter;
@@ -55,6 +61,8 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 txtMovieTitle.setText(movieTitles[i]);
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                imageView.setImageResource(moviePoster[i]);
             }
 
             @Override
